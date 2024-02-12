@@ -33,7 +33,13 @@
     <script>
         $.getJSON("https://www.swollenhippo.com/getCharactersByAPIKey.php?APIKey=Mickey2022!",function(result){
             //console.log(result);
-            console.log(result[0].CodeName);
+            //console.log(result[0].CodeName);          
+            
+            result.forEach(function(character,intIndex){
+                console.log(character);
+                let strHTML = '<option value="'+ character.CodeName +'">'+ character.FirstName + ' ' + character.LastName +'</option>';
+                $('#cboCharacter').append(strHTML);
+            })
         })
 
 
