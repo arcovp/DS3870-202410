@@ -8,27 +8,18 @@
 </head>
 <body>
     <div class="col-12 bg-primary vh-100 d-flex justify-content-center align-items-center">
-        <div class="col-11 col-md-7 col-lg-5 card" id="divOrder">
+        <div class="col-11 col-md-7 col-lg-5 card" id="divLogin">
             <div class="card-header">
-                <h3>New Order</h3>
+                <h3>Login</h3>
             </div>
             <div class="card-body">
                 <form>
-                    <Label for="txtFirstName" class="form-label">First Name:</Label>
-                    <input id="txtFirstName" type="nameFirst" class="form-control">
-                    <label for="txtLastName" class="form-label">Last Name:</label>
-                    <input id="txtLastName" type="nameLast" class="form-control">
                     <label for="txtEmail" class="form-label">Email:</label>
                     <input id="txtEmail" type="email" class="form-control">
-                    <label for="txtAddress" class="form-label">Shipping Address:</label>
-                    <input id="txtAddress" type="address" class="form-control">
-                    <label for="txtPhoneNum" class="form-label">Phone Number:</label>
-                    <input id="txtPhoneNum" type="phone" class="form-control">
-                    <select class="form-control" id="Mickey2024!"></select>
-                    <select class="form-control" id="Mickey2024!"></select>
-                    <select class="form-control" id="Mickey2024!"></select>
-                    <button id="btnOrder" type="button" class="btn btn-primary mt-3">Order</button>
-                    
+                    <label for="txtPassword" class="form-label">Password:</label>
+                    <input id="txtEmail" type="email" class="form-control">
+                    <button id="btnLogin" type="button" class="btn btn-primary mt-3">Login</button>
+                    <select class="form-control" id="cboCharacter">
 
                     </select>
                 </form>
@@ -40,21 +31,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
-        $.getJSON("https://www.swollenhippo.com/getTopsByAPIKey.php",function(result){
+        $.getJSON("https://www.swollenhippo.com/getCharactersByAPIKey.php?APIKey=Mickey2022!",function(result){
             //console.log(result);
-            //wconsole.log(result[0].CodeName);          
+            //console.log(result[0].CodeName);          
             
             result.forEach(function(character,intIndex){
                 console.log(character);
-                let strHTML = '<option value="'+ character.Top +'">'+ character.FirstName + ' ' + character.LastName +'</option>';
-                $('#Mickey2024!').append(strHTML);
+                let strHTML = '<option value="'+ character.CodeName +'">'+ character.FirstName + ' ' + character.LastName +'</option>';
+                $('#cboCharacter').append(strHTML);
             })
         })
 
 
-        $('#btnOrder').on('click',function(){
-            $('#divOrder').slideUp(function(){
-                $('#divOrder').slideDown();
+        $('#btnLogin').on('click',function(){
+            $('#divLogin').slideUp(function(){
+                $('#divLogin').slideDown();
             });   
 
         })
