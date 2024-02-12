@@ -48,16 +48,29 @@
 
             let strEmail = $('#txtEmail').val();
             let strPassword = $('#txtPassword').val()
+            let blnError = false;
+            let strError = '';
 
             if(strEmail == ''){
                 console.log('Email is empty')
+                blnError = true;
+                strError += " Email cannot be blank. "
             }
             if(strPassword == ''){
                 console.log('Password is empty')
+                blnError = true;
+                strError += " Password cannot be blank. "
             }
 
-            console.log(strEmail)
-            console.log(strPassword)
+            if(blnError == true){
+                alert(strError);
+            } else {
+                console.log(strEmail)
+                console.log(strPassword)
+
+            }
+
+            
 
             $('#divLogin').slideUp(function(){
                 $('#divLogin').slideDown();
