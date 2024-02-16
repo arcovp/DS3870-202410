@@ -22,9 +22,13 @@
                     <select class="form-control" id="cboCharacter">
 
                     </select>
+                    <button class="btn btn-success mt-5" type="button" id="btnDetail">Detail</button>
                 </form>
 
+                </div>
+                
             </div>
+            <div id="divDetails"></div>
         </div>
 
     </div>
@@ -39,6 +43,16 @@
                 console.log(character);
                 let strHTML = '<option value="'+ character.CodeName +'">'+ character.FirstName + ' ' + character.LastName +'</option>';
                 $('#cboCharacter').append(strHTML);
+            })
+        })
+
+
+        $('#btnDetail').on('click', function(){
+            //click handler for dtail button to build a detail profile card
+            let strCodeName = $('#cboCharacter').val()
+            $.getJSON('https://www.swollenhippo.com/getProfileDetailsByAPIKey.php?APIKey=Mickey2022!&Codename=' + strCodeName, function(billybob){
+                console.log(billybob.Agency);
+                $('#divDetails').append('<div class="card"><div class="card-body"><img class="rounded-circle" src="' + billybob.Image + '"><h2 class="col-12 text-center">' + billybob.FirstName + '</h2><h3 class="col-12 text-center">' + billybob.LastName + '</h3><p class="col-12 text-center mt-5">' + billybob.CodeName + '</p></div></div>')
             })
         })
 
