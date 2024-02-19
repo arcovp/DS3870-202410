@@ -52,14 +52,15 @@
             let strCodeName = $('#cboCharacter').val()
             $.getJSON('https://www.swollenhippo.com/getProfileDetailsByAPIKey.php?APIKey=Mickey2022!&Codename=' + strCodeName, function(billybob){
                 console.log(billybob.Agency);
-                $('#divDetails').append('<div class="card"><div class="card-body"><img class="rounded-circle" src="' + billybob.Image + '"><h2 class="col-12 text-center">' + billybob.FirstName + '</h2><h3 class="col-12 text-center">' + billybob.LastName + '</h3><p class="col-12 text-center mt-5">' + billybob.CodeName + '</p></div><button class="btn btn-primary col-12 btn-remove">Remove</button></div>')
+                $('#divDetails').append('<div class="card"><div class="card-body"><img class="rounded-circle" src="' + billybob.Image + '"><h2 class="col-12 text-center">' + billybob.FirstName + '</h2><h3 class="col-12 text-center">' + billybob.LastName + '</h3><p class="col-12 text-center mt-5">' + billybob.CodeName + '</p></div><button class="btn btn-primary col-12 btn-remove" data-CodeName="' + billybob.CodeName + '" >Remove</button></div>')
             })
         })
 
 
 
         $(document).on('click','.btn-remove',function(){
-            console.log('BTN REMOVE CLICKED');
+            console.log($(this).attr('data-codename'));
+
         })
 
 
